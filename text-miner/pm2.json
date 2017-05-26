@@ -1,0 +1,15 @@
+{
+  "apps": [
+    {
+      "name": "text-miner",
+      "script": ".",
+      "exec_mode": "fork",
+      "node_args": "--harmony-async-await",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "8001"
+      }
+    }
+  ]
+}
+

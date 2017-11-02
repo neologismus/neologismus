@@ -2,20 +2,17 @@
   "name": "@neologismus/text-miner",
   "version": "0.0.1",
   "description": "Text miner for Neologismus project",
-  "scripts": {
-    "start": "node ./server",
-    "lint": "node_modules/.bin/eslint src",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Kenzhaev Artur",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lttb/new-words/issues"
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node src/server"
   },
-  "homepage": "https://github.com/lttb/new-words#readme",
   "dependencies": {
     "@neologismus/common": "file:../common",
     "express": "^4.14.0",
+    "ioredis": "^3.2.1",
+    "mongoose": "^4.12.6",
     "phantom": "^3.2.0",
     "simple-statistics": "^2.2.0",
     "xregexp": "^3.1.1"

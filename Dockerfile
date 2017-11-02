@@ -2,15 +2,13 @@ FROM node:8
 
 RUN npm install pm2 -g
 RUN npm install lerna -g
+RUN npm install linklocal -g
 
 WORKDIR /neologismus
 
-COPY package.json .
-COPY lerna.json .
+COPY . .
 
 RUN npm run bootstrap
-
-COPY . .
 
 EXPOSE 8001
 

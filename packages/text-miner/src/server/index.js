@@ -1,7 +1,7 @@
 const express = require('express')
 
-const miner = require('../Miner')
-const Renderer = require('../Renderer')
+const Miner = require('../miner')
+const Renderer = require('../renderer')
 
 const Logger = require('@neologismus/common/Logger')
 
@@ -10,7 +10,7 @@ const port = process.env.APP_PORT || 8001;
 
 
 (async () => {
-  const renderer = await Renderer.init()
+  const renderer = await Renderer()
 
   app.get('/api', async (req, res) => {
     const { url } = req.query
@@ -22,7 +22,7 @@ const port = process.env.APP_PORT || 8001;
     }
 
     res.header('Content-Type', 'application/json; charset=utf-8')
-    res.json(miner(await renderer(url)))
+    res.json(Miner(await renderer(url)))
   })
 
   app.listen(port, () => {

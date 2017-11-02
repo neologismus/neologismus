@@ -1,6 +1,6 @@
 const phantom = require('phantom')
 
-const Logger = require('@neologismus/common/logger')
+const Logger = require('@neologismus/common/Logger')
 
 function resourceLoader(requestData, networkRequest) {
   if (/woff|svg|ttf|fonts/.test(requestData.url)) {
@@ -11,7 +11,7 @@ function resourceLoader(requestData, networkRequest) {
   console.info('Requesting', requestData.url)
 }
 
-module.exports.init = async () => {
+module.exports = async () => {
   const instance = await phantom.create()
 
   return async (url) => {

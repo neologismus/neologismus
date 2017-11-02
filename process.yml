@@ -1,5 +1,9 @@
 apps:
-  - script: 'packages/rss-parser'
+  - script: 'packages/rss-parser/src/worker'
     name: 'RSS_PARSER'
-    env:
-      PORT: 8001
+
+  - script: 'packages/text-miner/src/worker'
+    name: 'TEXT_MINER'
+    exec_mode: 'cluster'
+    instances: 4
+    autorestart: false

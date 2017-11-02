@@ -19,7 +19,6 @@ rules:
     - except-parens
 
   import/no-dynamic-require: 0
-  import/no-unresolved: [2, { ignore: ['^~.*', '\./style'] }]
   import/extensions: 0
 
   # @see https://github.com/facebookincubator/create-react-app/issues/2631

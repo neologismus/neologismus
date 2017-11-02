@@ -9,7 +9,7 @@ const Miner = require('@neologismus/text-miner/src/Miner')
 const Renderer = require('@neologismus/text-miner/src/Renderer')
 
 const app = express()
-const port = process.env.APP_PORT || 8001;
+const port = process.env.PORT || 8001;
 
 (async () => {
   const renderer = await Renderer.init()

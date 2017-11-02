@@ -1,13 +1,13 @@
 {
-  "name": "rss-parser",
+  "name": "@neologismus/rss-parser",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "description": "RSS-parser",
+  "main": "src/index.js",
   "scripts": {
     "start": "node ."
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Kenzhaev Artur",
+  "license": "MIT",
   "dependencies": {
     "@neologismus/common": "file:../common",
     "@neologismus/text-miner": "file:../text-miner",

@@ -1,10 +1,10 @@
 {
-  "name": "new-words-text-miner",
+  "name": "@neologismus/text-miner",
   "version": "0.0.1",
-  "description": "Text miner for New Words project",
+  "description": "Text miner for Neologismus project",
   "main": "src/index.js",
   "scripts": {
-    "start": "node --harmony-async-await .",
+    "start": "node ./server",
     "lint": "node_modules/.bin/eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,22 +13,13 @@
     "url": "git+https://github.com/lttb/new-words.git"
   },
   "author": "Kenzhaev Artur",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/lttb/new-words/issues"
   },
   "homepage": "https://github.com/lttb/new-words#readme",
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.18.2",
-    "babel-eslint": "^7.1.1",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.7.1"
-  },
   "dependencies": {
+    "@neologismus/common": "file:../common",
     "express": "^4.14.0",
     "phantom": "^3.2.0",
     "simple-statistics": "^2.2.0",

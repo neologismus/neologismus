@@ -1,0 +1,19 @@
+{
+  "name": "rss-parser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@neologismus/common": "file:../common",
+    "@neologismus/text-miner": "file:../text-miner",
+    "express": "^4.14.0",
+    "feedparser": "^2.2.1",
+    "node-feedparser": "^1.0.1",
+    "request": "^2.79.0"
+  }
+}

@@ -14,16 +14,10 @@ rules:
   consistent-return:
     - error
     - treatUndefinedAsUnspecified: true
-  no-cond-assign:
-    - error
-    - except-parens
 
   import/no-dynamic-require: 0
   import/no-unresolved: [2, { ignore: ['^~.*', '\./style'] }]
   import/extensions: 0
-
-  # @see https://github.com/facebookincubator/create-react-app/issues/2631
-  jsx-a11y/href-no-hash: 0
 env:
   browser: true
   es6: true

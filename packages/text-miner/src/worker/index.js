@@ -3,10 +3,13 @@ const mongoose = require('mongoose')
 
 const { Miner, Renderer } = require('../')
 
-const redis = new Redis({
+const config = {
   host: 'redis',
   keyPrefix: 'neologismus:',
-})
+}
+
+const redisHandler = new Redis(config)
+const redisPusher = new Redis(config)
 
 mongoose.Promise = global.Promise
 
@@ -31,7 +34,7 @@ const ContextSchema = {
   const Context = db.model('Context', new mongoose.Schema(ContextSchema, { timestamps: true }))
 
   const waitForMessage = () => {
-    redis
+    redisHandler
       .brpop('text-miner:contents', 0)
       .then(async ([, message]) => {
         waitForMessage()
@@ -42,6 +45,13 @@ const ContextSchema = {
           if (total) return
 
           const context = Miner(await renderer(link))
+
+          redisPusher.lpush('classifier:contexts', JSON.stringify({
+            context,
+            link,
+            resourceId,
+            data,
+          }))
 
           const item = new Context({ resourceId, context, link, data })
 

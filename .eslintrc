@@ -17,6 +17,13 @@ rules:
   no-cond-assign:
     - error
     - except-parens
+  comma-dangle:
+    - error
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: always-multiline
+      exports: always-multiline
+      functions: ignore
 
   import/no-dynamic-require: 0
   import/extensions: 0
@@ -27,3 +34,7 @@ env:
   browser: true
   es6: true
   jest: true
+
+settings:
+  import/resolver':
+    babel-module': {}

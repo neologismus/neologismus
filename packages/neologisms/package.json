@@ -1,0 +1,16 @@
+{
+  "name": "@neologismus/neologisms",
+  "version": "0.0.1",
+  "description": "Neologism database service",
+  "author": "Kenzhaev Artur",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server"
+  },
+  "dependencies": {
+    "@neologismus/common": "file:../common",
+    "express": "^4.14.0",
+    "ioredis": "^3.2.1",
+    "mongoose": "^4.12.6"
+  }
+}

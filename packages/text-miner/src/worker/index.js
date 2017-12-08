@@ -46,16 +46,16 @@ const ContextSchema = {
 
           const context = Miner(await renderer(link))
 
-          redisPusher.lpush('classifier:contexts', JSON.stringify({
-            context,
-            link,
-            resourceId,
-            data,
-          }))
-
           const item = new Context({ resourceId, context, link, data })
 
-          item.save()
+          item
+            .save()
+            .then((doc) => {
+              redisPusher.lpush('classifier:contexts', JSON.stringify({
+                payload: context,
+                contextId: doc.id,
+              }))
+            })
         })
       })
   }

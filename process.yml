@@ -1,9 +1,0 @@
-apps:
-  - script: 'packages/rss-parser/src/worker'
-    name: 'RSS_PARSER'
-
-  - script: 'packages/text-miner/src/worker'
-    name: 'TEXT_MINER'
-    exec_mode: 'cluster'
-    instances: 4
-    autorestart: false

@@ -1,9 +1,43 @@
-app:
+text-miner:
   build: .
+  environment:
+    - SERVICE=text-miner
+  dockerfile: Dockerfile.text-miner
   volumes:
-    - .:/neologismus
+    - .:/text-miner
+  links:
+    - redis
+    - mongo
+
+rss-parser:
+  build: .
+  environment:
+    - SERVICE=rss-parser
+  dockerfile: Dockerfile.rss-parser
+  volumes:
+    - .:/rss-parser
+  links:
+    - redis
+    - mongo
+
+neologisms:
+  build: .
+  environment:
+    - SERVICE=neologisms
+  dockerfile: Dockerfile.neologisms
+  volumes:
+    - .:/neologisms
+  links:
+    - redis
+    - mongo
   ports:
     - '8001:8001'
+
+classifier:
+  build: .
+  dockerfile: Dockerfile.classifier
+  volumes:
+    - .:/classifier
   links:
     - redis
     - mongo

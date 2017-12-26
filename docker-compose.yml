@@ -42,6 +42,14 @@ classifier:
     - redis
     - mongo
 
+nginx:
+  build: .
+  dockerfile: Dockerfile.nginx
+  links:
+    - neologisms
+  ports:
+    - '80:80'
+
 redis:
   image: redis
 

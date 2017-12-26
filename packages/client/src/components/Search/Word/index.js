@@ -1,9 +1,12 @@
 import React from 'react'
 import moment from 'moment'
+import styled from 'styled-jss'
 
 import {Line} from 'react-chartjs-2'
 
 import Contexts from '../Contexts'
+
+const GraphContainer = styled('div')({boxShadow: 'inset 0px 0px 10px -4px', padding: 10})
 
 const Word = ({word, contexts, setContext}) => {
   if (!word.ngram) return null
@@ -31,11 +34,14 @@ const Word = ({word, contexts, setContext}) => {
 
   return (
     <div>
-      <Line data={{
-        labels: data.map(([date]) => date),
-        datasets: [{label: word.value, data: data.map(([, val]) => val.length)}],
-      }}
-      />
+      <GraphContainer>
+        <Line data={{
+          labels: data.map(([date]) => date),
+          datasets: [{label: word.value, data: data.map(([, val]) => val.length)}],
+        }}
+        />
+      </GraphContainer>
+
       <Contexts val={word.value} data={data} />
     </div>
   )

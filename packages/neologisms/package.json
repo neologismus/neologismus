@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@neologismus/common": "file:../common",
+    "@neologismus/text-miner": "file:../text-miner",
     "express": "^4.14.0",
     "ioredis": "^3.2.1",
     "mongoose": "^4.12.6"

@@ -13,7 +13,7 @@ const Title = styled(({className, children}) => (
   </Typography>
 ))({flex: 1, color: 'whitesmoke'})
 
-const Link = styled(NavLink)({textDecoration: 'none'})
+const Link = styled(NavLink)({textDecoration: 'none', color: 'white'})
 
 const Links = styled('div')({[`& ${Link} + ${Link}`]: {marginLeft: 10}})
 
@@ -24,6 +24,7 @@ export default () => (
 
       <Links>
         <Link to="/search">Search</Link>
+        <Link to="/parse">Parse</Link>
         <Link to="/about">About</Link>
       </Links>
     </Toolbar>

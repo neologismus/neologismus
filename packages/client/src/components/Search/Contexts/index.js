@@ -4,17 +4,29 @@ import moment from 'moment'
 import {compose, withHandlers, withStateHandlers, withState} from 'recompose'
 
 const Selected = styled('b')({color: '#50c1d0'})
+const Link = styled('a')({color: 'black'})
 
-const Context = styled(withStateHandlers(
+const Text = styled('p')({borderLeft: [2, 'solid', '#50c1d0'], paddingLeft: 10})
+
+const Container = styled('div')({
+  color: '#2b3333',
+  padding: [5, 10],
+  transition: 'background-color .3s',
+  '&:hover': {backgroundColor: '#fefefe'},
+})
+
+export const Context = styled(withStateHandlers(
   {opened: false},
   {showContext: state => () => ({opened: !state.opened})}
 )(({opened, showContext, className, val, ...props}) => (
-  <a role="link" className={className} onClick={showContext}>
-    <p>{props.data.title || props.context.slice(0, 25).join('...')}</p>
+  <div>
+    <p className={className} onClick={showContext}>
+      {(props.data && props.data.title) || props.context.slice(0, 25).concat('...')}
+    </p>
 
     {opened && (
-      <div style={{color: 'black'}}>
-        <a target="_blank" href={props.link}>Source</a>
+      <Container>
+        <Link target="_blank" href={props.link}>source</Link>
 
         <p>
           {props.context.replace(/([а-яА-Я-ё]+)/g, (_, word) => {
@@ -29,19 +41,19 @@ const Context = styled(withStateHandlers(
               if (!orig[i + 1]) return acc
 
               const elem = (
-                <p>
-                  {`...${text.slice(-100)}`}
+                <Text>
+                  {`...${text.slice(-200)}`}
                   <Selected>{val}</Selected>
-                  {`${orig[i + 1].slice(0, 100)}...`}
-                </p>
+                  {`${orig[i + 1].slice(0, 200)}...`}
+                </Text>
               )
 
               return acc.concat(elem)
             }, [])}
         </p>
-      </div>
+      </Container>
     )}
-  </a>
+  </div>
 )))({
   cursor: 'pointer',
   color: '#50c1d0',

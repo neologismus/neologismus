@@ -9,10 +9,8 @@ const config = {
   keyPrefix: 'neologismus:',
 }
 
-const redisHandler = new Redis(config)
-
-
-;(async () => {
+const redisHandler = new Redis(config);
+(async () => {
   const model = await Model()
 
   console.log('Worker is ready!')
@@ -24,6 +22,8 @@ const redisHandler = new Redis(config)
         waitForMessage()
 
         const { payload, contextId } = JSON.parse(message)
+
+        console.log('message', message)
 
         model.add({ ngrams: payload, contextId })
           .forEach(([ngram, p]) => {

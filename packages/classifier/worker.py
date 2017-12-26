@@ -18,7 +18,10 @@ def listen():
     )
 
     while True:
-        _, message = r.brpop('neologismus:classifier:contexts', timeout=0)
+        type, message = r.brpop([
+            'neologismus:classifier:contexts',
+            'neologismus:classifier:contexts:links',
+        ], timeout=0)
 
         data = json.loads(message)
 
@@ -30,10 +33,19 @@ def listen():
         if (not words):
             continue
 
-        r.lpush('neologismus:neologisms:words', json.dumps({
-            'contextId': data['contextId'],
-            'payload': words
-        }))
+        print('type', type)
+
+        if type == 'neologismus:classifier:contexts:links':
+            id = data['id']
+            print(id, f'neologismus:neologisms:words:{id}')
+            r.lpush(f'neologismus:neologisms:words:{id}', json.dumps({
+                'payload': words
+            }))
+        else:
+            r.lpush('neologismus:neologisms:words', json.dumps({
+                'contextId': data['contextId'],
+                'payload': words
+            }))
 
 
 pool = ThreadPoolExecutor(max_workers=multiprocessing.cpu_count())

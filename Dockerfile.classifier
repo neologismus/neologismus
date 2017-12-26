@@ -9,4 +9,4 @@ WORKDIR /classifier
 
 COPY . /classifier
 
-CMD ["python", "classifier/worker.py"]
+CMD ["python", "packages/classifier/worker.py"]

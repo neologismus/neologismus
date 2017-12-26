@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
   font-size: calc(1em + .5vw);
 }
 
@@ -6,7 +6,7 @@ html, body {
   html, body {
     font-size: calc(1em + 3vw);
   }
-}
+} */
 
 #app {
   top: 0;
@@ -19,7 +19,7 @@ html, body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 200;
   background-color: #f5f8fa;
-  font-size: .8rem;
+  /* font-size: .8rem; */
 }
 
 * {

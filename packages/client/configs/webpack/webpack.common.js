@@ -1,7 +1,6 @@
 const R = require('ramda')
 const webpack = require('webpack')
 
-
 const tests = {
   js: /\.jsx?$/,
   style: /\.s[ac]?ss$/,

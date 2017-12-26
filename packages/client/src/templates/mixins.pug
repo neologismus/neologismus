@@ -1,0 +1,30 @@
+mixin head(title = 'Neologismus')
+  meta(charset='utf-8')/
+  meta(
+    name='viewport'
+    content=`${`
+      width=device-width,
+      height=device-height,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=0
+    `.replace(/[\n\s]/g, '')}`
+  )/
+
+  title #{`${title}`}
+  
+  script(src="https://use.fontawesome.com/9edef71e4b.js", async)
+  
+  style
+    include ../styles/initial.css
+  
+  script
+    include ../utils/fonts.js
+
+  block
+
+mixin body(html = '')
+  #app
+    != html
+  
+  block

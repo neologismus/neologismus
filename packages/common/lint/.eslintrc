@@ -1,0 +1,24 @@
+extends: airbnb
+parser: babel-eslint
+rules:
+  semi:
+    - error
+    - never
+  no-console: 0
+  global-require: 0
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
+  no-template-curly-in-string: 0
+  no-void: 0
+  consistent-return:
+    - error
+    - treatUndefinedAsUnspecified: true
+
+  import/no-dynamic-require: 0
+  import/no-unresolved: [2, { ignore: ['^~.*', '\./style'] }]
+  import/extensions: 0
+env:
+  browser: true
+  es6: true
+  jest: true

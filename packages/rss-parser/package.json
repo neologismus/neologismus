@@ -1,0 +1,20 @@
+{
+  "name": "@neologismus/rss-parser",
+  "version": "0.0.1",
+  "description": "RSS parser for Neologismus",
+  "author": "Kenzhaev Artur",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node src/server"
+  },
+  "dependencies": {
+    "@neologismus/common": "file:../common",
+    "@neologismus/text-miner": "file:../text-miner",
+    "express": "^4.14.0",
+    "feedparser": "^2.2.1",
+    "ioredis": "^3.2.1",
+    "node-feedparser": "^1.0.1",
+    "request": "^2.79.0"
+  }
+}

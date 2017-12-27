@@ -1,17 +1,15 @@
 FROM node:8
 
 RUN npm install pm2 -g
-RUN npm install lerna -g
-RUN npm install linklocal -g
 
-WORKDIR /neologisms
+WORKDIR .
 
-COPY ./packages/common/package.json /neologisms/packages/common/package.json
-COPY ./packages/text-miner/package.json /neologisms/packages/text-miner/package.json
-COPY ./packages/neologisms/package.json /neologisms/packages/neologisms/package.json
+COPY ./packages/common/package.json ./packages/common/package.json
+COPY ./packages/text-miner/package.json ./packages/text-miner/package.json
+COPY ./packages/neologisms/package.json ./packages/neologisms/package.json
 
-RUN cd packages/neologisms && npm install && cd -
+RUN cd ./packages/neologisms && npm install --unsafe-perm && cd -
 
-COPY . /neologisms
+COPY . .
 
 CMD ["pm2-docker", "ecosystem.config.js"]

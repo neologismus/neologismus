@@ -3,8 +3,6 @@ text-miner:
   environment:
     - SERVICE=text-miner
   dockerfile: Dockerfile.text-miner
-  volumes:
-    - .:/text-miner
   links:
     - redis
     - mongo
@@ -14,8 +12,6 @@ rss-parser:
   environment:
     - SERVICE=rss-parser
   dockerfile: Dockerfile.rss-parser
-  volumes:
-    - .:/rss-parser
   links:
     - redis
     - mongo
@@ -25,8 +21,6 @@ neologisms:
   environment:
     - SERVICE=neologisms
   dockerfile: Dockerfile.neologisms
-  volumes:
-    - .:/neologisms
   links:
     - redis
     - mongo
@@ -36,8 +30,6 @@ neologisms:
 classifier:
   build: .
   dockerfile: Dockerfile.classifier
-  volumes:
-    - .:/classifier
   links:
     - redis
     - mongo

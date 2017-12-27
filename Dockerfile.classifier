@@ -5,8 +5,8 @@ RUN pip install redis
 RUN pip install nltk
 RUN pip install pymongo
 
-WORKDIR /classifier
+WORKDIR .
 
-COPY . /classifier
+COPY . .
 
 CMD ["python", "packages/classifier/worker.py"]

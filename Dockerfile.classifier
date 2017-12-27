@@ -1,0 +1,12 @@
+FROM python:3
+
+RUN pip install pymorphy2
+RUN pip install redis
+RUN pip install nltk
+RUN pip install pymongo
+
+WORKDIR /classifier
+
+COPY . /classifier
+
+CMD ["python", "packages/classifier/worker.py"]

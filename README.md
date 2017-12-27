@@ -1,1 +1,1 @@
-# new-words
+# neologismus

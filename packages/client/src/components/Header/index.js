@@ -16,8 +16,9 @@ const Title = styled(({className, children}) => (
 ))({flex: 1, color: 'whitesmoke'})
 
 const Link = styled(NavLink)({textDecoration: 'none', color: 'white'})
+const A = styled('a')({textDecoration: 'none', color: 'white'})
 
-const Links = styled('div')({[`& ${Link} + ${Link}`]: {marginLeft: 10}})
+const Links = styled('div')({[`& ${Link} + ${Link}, & ${Link} + ${A}`]: {marginLeft: 10}})
 
 const Logo = styled('a')({
   backgroundImage: `url(${light})`,
@@ -45,6 +46,9 @@ export default () => (
           <Link to="/search">Search</Link>
           <Link to="/parse">Parse</Link>
           <Link to="/about">About</Link>
+          <A target="_blank" href="https://github.com/neologismus/neologismus">
+            <i className="fa fa-github" aria-hidden="true" />
+          </A>
         </Links>
       </Container>
     </Toolbar>

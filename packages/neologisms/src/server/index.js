@@ -64,7 +64,17 @@ const redisPusher = new Redis(config);
   app.get('/api/parse', async (req, res) => {
     const { link } = req.query
 
-    const context = Miner(await renderer(link))
+    res.header('Content-Type', 'application/json; charset=utf-8')
+
+    let context
+    try {
+      context = Miner(await renderer(link))
+    } catch (e) {
+      Logger.log(e)
+
+      res.json({ error: `Can't reach the ${link}` })
+    }
+
 
     const id = require('crypto').createHash('md5').update(link).digest('hex')
 
@@ -77,7 +87,6 @@ const redisPusher = new Redis(config);
 
         Promise.all(words.map(model.search))
           .then((docs) => {
-            res.header('Content-Type', 'application/json; charset=utf-8')
             res.json({
               context,
               link,
@@ -85,7 +94,7 @@ const redisPusher = new Redis(config);
             })
           })
           .catch((err) => {
-            console.log(err)
+            console.error(err)
           })
       })
 

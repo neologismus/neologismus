@@ -12,7 +12,7 @@ const Container = styled('section')({
   display: 'flex',
   justifyContent: 'center',
   padding: 20,
-  height: '100%',
+  minHeight: '100%',
 })
 
 export default () => (

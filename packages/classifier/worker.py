@@ -33,8 +33,6 @@ def listen():
         if (not words):
             continue
 
-        print('type', type)
-
         if type == 'neologismus:classifier:contexts:links':
             id = data['id']
             print(id, f'neologismus:neologisms:words:{id}')

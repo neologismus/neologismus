@@ -3,6 +3,8 @@ import {compose, withHandlers, withStateHandlers, withState} from 'recompose'
 import styled from 'styled-jss'
 import {NavLink} from 'react-router-dom'
 
+import {CircularProgress} from 'material-ui/Progress'
+
 import Word from '../Search/Word'
 import {Context} from '../Search/Contexts'
 
@@ -40,11 +42,11 @@ const Controls = styled('div')({
   [`& ${Button}`]: {marginLeft: 20},
 })
 
-const Pendable = styled(({children, className}) => (
+const Pendable = styled(({children, pending, className}) => (
   <div className={className}>
-    {children}
+    {pending ? <div style={{marginTop: 50, textAlign: 'center'}}><CircularProgress /></div> : children}
   </div>
-))({opacity: ({pending}) => (pending ? 0.5 : 1)})
+))({opacity: ({pending}) => (pending ? 1 : 1)})
 
 const Parse = ({
   parse,
@@ -53,6 +55,10 @@ const Parse = ({
   data,
 }) => (
   <Container>
+    <p>
+      We can try to parse an article to find some new words there.
+    </p>
+
     <Controls>
       <Input value={link} onChange={setLink} placeholder="Paste your link here" />
 

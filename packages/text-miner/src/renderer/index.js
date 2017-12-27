@@ -30,6 +30,10 @@ module.exports = async () => {
 
     Logger.log({ url, status })
 
+    if (status !== 'success') {
+      throw new Error(`Can't reach the ${url}`)
+    }
+
     const text = (await page.property('plainText')).split('\n').filter(Boolean)
     const source = await page.property('content')
 

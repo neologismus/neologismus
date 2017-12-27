@@ -13,12 +13,10 @@ const PATHS = {
   build: path.join(__dirname, '../../build'),
 }
 
-const { conf } = common({ PATHS })
+const {conf} = common({PATHS})
 
 const plugins = R.over(R.lensProp('plugins'), R.concat([
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify('development'),
-  }),
+  new webpack.DefinePlugin({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)}),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NamedModulesPlugin(),
   new HtmlWebpackPlugin({
@@ -50,7 +48,7 @@ const rest = R.merge({
     port: PORT,
     hot: true,
 
-    stats: { colors: true, modules: false },
+    stats: {colors: true, modules: false},
     historyApiFallback: true,
 
     proxy: [

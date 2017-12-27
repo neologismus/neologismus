@@ -1,16 +1,16 @@
 FROM node:8
 
-RUN npm install pm2 -g
+RUN npm install pm2@latest -g
 
-WORKDIR .
+WORKDIR /rss-parser
 
-COPY ./packages/common/package.json ./packages/common/package.json
-COPY ./packages/text-miner/package.json ./packages/text-miner/package.json
+COPY ./packages/common/package.json /rss-parser/packages/common/package.json
+COPY ./packages/text-miner/package.json /rss-parser/packages/text-miner/package.json
 
-COPY ./packages/rss-parser/package.json ./packages/rss-parser/package.json
+COPY ./packages/rss-parser/package.json /rss-parser/packages/rss-parser/package.json
 
-RUN cd ./packages/rss-parser && npm install --unsafe-perm && cd -
+RUN cd packages/rss-parser && npm install --unsafe-perm && cd -
 
-COPY . .
+COPY . /rss-parser
 
-CMD ["pm2-docker", "ecosystem.config.js"]
+CMD ["pm2-runtime", "ecosystem.config.js"]

@@ -3,6 +3,7 @@ const services = {
     {
       name: 'rss-parser',
       script: 'packages/rss-parser/src/worker',
+      autorestart: true,
     },
   ],
   'text-miner': [
@@ -11,17 +12,19 @@ const services = {
       script: 'packages/text-miner/src/worker',
       instances: 4,
       exec_mode: 'cluster',
-      autorestart: false,
+      autorestart: true,
     },
   ],
   neologisms: [
     {
       name: 'neologisms',
       script: 'packages/neologisms/src/worker',
+      autorestart: true,
     },
     {
       name: 'neologisms:api',
       script: 'packages/neologisms/src/server',
+      autorestart: true,
     },
   ],
 }

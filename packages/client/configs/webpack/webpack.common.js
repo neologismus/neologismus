@@ -8,7 +8,7 @@ const tests = {
   img: /\.(jpe?g|png|gif|svg)$/i,
 }
 
-const rules = ({ PATHS }) => [
+const rules = ({PATHS}) => [
   {
     test: tests.js,
     include: [
@@ -17,15 +17,19 @@ const rules = ({ PATHS }) => [
     use: [
       {
         loader: 'babel-loader',
-        options: {
-          cacheDirectory: true,
-        },
+        options: {cacheDirectory: true},
       },
     ],
   },
   {
     test: tests.pug,
     loader: 'pug-loader',
+  },
+  {
+    test: /\.(svg|png|jpg|gif)$/,
+    use: [
+      {loader: 'file-loader'},
+    ],
   },
 ]
 
@@ -45,12 +49,10 @@ module.exports = options => ({
   lens,
 
   conf: {
-    resolve: {
-      extensions: ['.js', '.jsx', '.sss', '.json'],
-    },
+    resolve: {extensions: ['.js', '.jsx', '.sss', '.json']},
 
     plugins: plugins(options),
 
-    module: { rules: rules(options) },
+    module: {rules: rules(options)},
   },
 })

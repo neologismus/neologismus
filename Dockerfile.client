@@ -1,0 +1,14 @@
+FROM node:8
+
+WORKDIR /server
+
+COPY ./packages/common/package.json /server/packages/common/package.json
+COPY ./packages/client/package.json /server/packages/client/package.json
+
+RUN cd packages/client && npm install
+
+RUN cd -
+
+COPY . /server
+
+RUN cd packages/client && npm run build

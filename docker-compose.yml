@@ -25,7 +25,7 @@ neologisms:
     - redis
     - mongo
   ports:
-    - '8001:8001'
+    - 8001
 
 classifier:
   build: .
@@ -37,10 +37,14 @@ classifier:
 nginx:
   build: .
   dockerfile: Dockerfile.nginx
+  volumes:
+    - certs:/etc/letsencrypt
+    - certs-data:/data/letsencrypt
   links:
     - neologisms
   ports:
-    - '80:80'
+    - 80:80
+    - 443:443
 
 redis:
   image: redis
@@ -48,4 +52,4 @@ redis:
 mongo:
   image: mongo
   ports:
-    - '27017:27017'
+    - 27017

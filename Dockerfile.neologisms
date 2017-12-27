@@ -1,15 +1,16 @@
 FROM node:8
 
-RUN npm install pm2 -g
+RUN npm install pm2@latest -g
 
-WORKDIR .
+WORKDIR /neologisms
 
-COPY ./packages/common/package.json ./packages/common/package.json
-COPY ./packages/text-miner/package.json ./packages/text-miner/package.json
-COPY ./packages/neologisms/package.json ./packages/neologisms/package.json
+COPY ./packages/common/package.json /neologisms/packages/common/package.json
+COPY ./packages/text-miner/package.json /neologisms/packages/text-miner/package.json
 
-RUN cd ./packages/neologisms && npm install --unsafe-perm && cd -
+COPY ./packages/neologisms/package.json /neologisms/packages/neologisms/package.json
 
-COPY . .
+RUN cd packages/neologisms && npm install --unsafe-perm && cd -
 
-CMD ["pm2-docker", "ecosystem.config.js"]
+COPY . /neologisms
+
+CMD ["pm2-runtime", "ecosystem.config.js"]

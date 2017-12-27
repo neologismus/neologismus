@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config ./configs/webpack/webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack -p --config ./configs/webpack/webpack.config.prod.js",
     "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
@@ -47,6 +48,7 @@
     "eslint": "^4.14.0",
     "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.8.0",
+    "file-loader": "^1.1.6",
     "flow-bin": "^0.60.1",
     "flow-typed": "^2.2.3",
     "html-webpack-plugin": "^2.30.1",

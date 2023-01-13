@@ -1,6 +1,6 @@
 # Neologismus
 This is the unique service for parsing web-pages and saving found neologisms.  
-The service is packed in Docker container, so the main requirement for your PC is **Linux OS**.  
+The service is packed in Docker container.  
 ## How to build the service
 **command:**  
 docker-compose run  
